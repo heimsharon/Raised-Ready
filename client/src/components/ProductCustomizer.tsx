@@ -159,11 +159,11 @@ export default function ProductCustomizer({ onAddToCart }: ProductCustomizerProp
     if (!canvas || !selectedDesign) return;
 
     const isReady = window.confirm('Are you ready to go to checkout?');
-    
+
     if (isReady) {
       const productData = productImages[product];
       const designImage = canvas.toDataURL({ format: 'png', quality: 1, multiplier: 2 });
-      
+
       const cartItem: CartItem = {
         product: productData,
         design: selectedDesign,
@@ -171,6 +171,8 @@ export default function ProductCustomizer({ onAddToCart }: ProductCustomizerProp
         total: productData.price
       };
 
+      // For demo: just show alert instead of backend call
+      alert(`Demo: Added ${productData.name} ($${productData.price}) to cart! In production, this would save to database.`);
       onAddToCart(cartItem);
     }
   };
@@ -188,7 +190,7 @@ export default function ProductCustomizer({ onAddToCart }: ProductCustomizerProp
             <option value="cap">Cap - ${productImages.cap.price}</option>
           </select>
         </label>
-        
+
         <div className="price-display">
           <h3>Price: ${productImages[product].price}</h3>
         </div>
