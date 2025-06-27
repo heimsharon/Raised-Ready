@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: raised-ready-client
+    env: static
+    rootDir: client
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+
+  - type: web
+    name: raised-ready-server
+    env: node
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start

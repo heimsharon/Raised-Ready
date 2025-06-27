@@ -1,0 +1,20 @@
+# Node
+node_modules/
+npm-debug.log
+.env
+
+# Build
+dist/
+build/
+
+# Compiled JavaScript files
+*.js
+*.js.map
+!vite.config.js
+!*.config.js
+
+# OS junk
+.DS_Store
+
+# Logs
+*.log

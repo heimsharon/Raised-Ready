@@ -1,0 +1,149 @@
+.navbar {
+  background: linear-gradient(135deg, #0052CC 0%, #FF0000 50%, #FFFFFF 100%);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid #FFD700; /* Gold accent for FDNY heritage */
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  background: rgba(0, 82, 204, 0.95); /* Puerto Rico blue */
+}
+
+.nav-logo h2 {
+  color: #FFFFFF;
+  margin: 0;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  letter-spacing: 1px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+.nav-link {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 0, 0, 0.8); /* Puerto Rico red */
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cart-button {
+  background: linear-gradient(45deg, #FF0000, #FFD700);
+  color: white;
+  border: 2px solid #FFFFFF;
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.cart-button:hover {
+  background: linear-gradient(45deg, #FFD700, #FF0000);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.nav-toggle span {
+  width: 25px;
+  height: 4px;
+  background-color: #FFFFFF;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+  .nav-container {
+    height: 70px;
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    flex-direction: column;
+    background: linear-gradient(180deg, #0052CC 0%, #FF0000 100%);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    padding: 20px 0;
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .nav-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  .nav-logo h2 {
+    font-size: 1.6em;
+  }
+
+  .cart-button {
+    padding: 8px 16px;
+    font-size: 1em;
+  }
+}

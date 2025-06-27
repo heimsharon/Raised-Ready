@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "baseUrl": "./",
+    "paths": {
+      "@styles/*": ["src/assets/styles/*"],
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"]
+    }
+  },
+  "include": ["src"]
+}
