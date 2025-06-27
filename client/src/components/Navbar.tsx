@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import '../assets/styles/Navbar.css';
 
 interface NavbarProps {
@@ -8,27 +9,35 @@ interface NavbarProps {
 
 export default function Navbar({ cartCount, onCartClick }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="navbar">
       <div className="nav-container">
         <div className="nav-logo">
-          <h2>🇵🇷 Raised Ready 🚑</h2>
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <h2>🇵🇷 Raised Ready 🚑</h2>
+          </Link>
         </div>
 
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <a href="#home" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+          <button className="nav-link" onClick={() => handleNavigation('/')}>
             Home
-          </a>
-          <a href="#products" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+          </button>
+          <button className="nav-link" onClick={() => handleNavigation('/customizer')}>
             Products
-          </a>
-          <a href="#about" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-            About
-          </a>
-          <a href="#contact" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-            Contact
-          </a>
+          </button>
+          <button className="nav-link" onClick={() => handleNavigation('/checkout')}>
+            Cart
+          </button>
+          <button className="nav-link" onClick={() => handleNavigation('/admin')}>
+            Admin
+          </button>
         </div>
 
         <div className="nav-actions">
