@@ -13,9 +13,11 @@ interface CartItem {
 
 interface CheckoutProps {
   cartItems: CartItem[];
+  onClearCart: () => void;
+  onRemoveItem: (index: number) => void;
 }
 
-export default function Checkout({ cartItems }: CheckoutProps) {
+export default function Checkout({ cartItems, onClearCart, onRemoveItem }: CheckoutProps) {
   const totalAmount = cartItems.reduce((sum, item) => sum + item.total, 0);
 
   return (
@@ -36,6 +38,13 @@ export default function Checkout({ cartItems }: CheckoutProps) {
                   <img src={item.designImage} alt="Custom design" style={{ maxWidth: '100px', maxHeight: '100px' }} />
                 </div>
               </div>
+              <button 
+                className="remove-item-button"
+                onClick={() => onRemoveItem(index)}
+                title="Remove item"
+              >
+                ❌
+              </button>
             </div>
           ))
         )}
@@ -47,13 +56,29 @@ export default function Checkout({ cartItems }: CheckoutProps) {
         )}
       </div>
 
-      <button 
-        className="confirm-button" 
-        disabled={cartItems.length === 0}
-        onClick={() => alert('Order placed successfully!')}
-      >
-        Confirm & Place Order
-      </button>
+      <div className="cart-actions">
+        {cartItems.length > 0 && (
+          <>
+            <button 
+              className="clear-cart-button" 
+              onClick={onClearCart}
+            >
+              🗑️ Clear Cart
+            </button>
+            
+            <button 
+              className="confirm-button" 
+              onClick={() => alert('Order placed successfully!')}
+            >
+              Confirm & Place Order
+            </button>
+          </>
+        )}
+        
+        {cartItems.length === 0 && (
+          <p className="empty-cart-message">Your cart is empty. <a href="/customizer">Start customizing!</a></p>
+        )}
+      </div>
     </div>
   );
 }

@@ -30,13 +30,30 @@ function AppContent() {
     navigate('/checkout');
   };
 
+  const handleClearCart = () => {
+    const isConfirmed = window.confirm('Are you sure you want to clear your entire cart? This action cannot be undone.');
+
+    if (isConfirmed) {
+      setCartItems([]);
+      alert('Cart cleared successfully!');
+    }
+  };
+
+  const handleRemoveItem = (index: number) => {
+    const isConfirmed = window.confirm('Are you sure you want to remove this item from your cart?');
+
+    if (isConfirmed) {
+      setCartItems(prev => prev.filter((_, i) => i !== index));
+    }
+  };
+
   return (
     <>
       <Navbar cartCount={cartItems.length} onCartClick={handleCartClick} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/customizer" element={<ProductCustomizer onAddToCart={handleAddToCart} />} />
-        <Route path="/checkout" element={<Checkout cartItems={cartItems} />} />
+        <Route path="/checkout" element={<Checkout cartItems={cartItems} onClearCart={handleClearCart} onRemoveItem={handleRemoveItem} />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </>
