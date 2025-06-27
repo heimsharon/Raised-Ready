@@ -15,9 +15,10 @@ interface CheckoutProps {
   cartItems: CartItem[];
   onClearCart: () => void;
   onRemoveItem: (index: number) => void;
+  onNavigateToCustomizer: () => void;
 }
 
-export default function Checkout({ cartItems, onClearCart, onRemoveItem }: CheckoutProps) {
+export default function Checkout({ cartItems, onClearCart, onRemoveItem, onNavigateToCustomizer }: CheckoutProps) {
   const totalAmount = cartItems.reduce((sum, item) => sum + item.total, 0);
 
   return (
@@ -76,7 +77,15 @@ export default function Checkout({ cartItems, onClearCart, onRemoveItem }: Check
         )}
         
         {cartItems.length === 0 && (
-          <p className="empty-cart-message">Your cart is empty. <a href="/customizer">Start customizing!</a></p>
+          <p className="empty-cart-message">
+            Your cart is empty.{' '}
+            <button 
+              className="start-customizing-link" 
+              onClick={onNavigateToCustomizer}
+            >
+              Start customizing!
+            </button>
+          </p>
         )}
       </div>
     </div>

@@ -53,7 +53,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/customizer" element={<ProductCustomizer onAddToCart={handleAddToCart} />} />
-        <Route path="/checkout" element={<Checkout cartItems={cartItems} onClearCart={handleClearCart} onRemoveItem={handleRemoveItem} />} />
+        <Route path="/checkout" element={<Checkout cartItems={cartItems} onClearCart={handleClearCart} onRemoveItem={handleRemoveItem} onNavigateToCustomizer={() => navigate('/customizer')} />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </>
